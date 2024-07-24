@@ -1,6 +1,9 @@
 package net.frostytrix.redstone_color_screen;
 
 import com.mojang.logging.LogUtils;
+import net.frostytrix.redstone_color_screen.block.ModBlocks;
+import net.frostytrix.redstone_color_screen.item.ModCreativeTabs;
+import net.frostytrix.redstone_color_screen.item.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -26,6 +29,10 @@ public class RedstoneScreen
     public RedstoneScreen()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        ModBlocks.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModCreativeTabs.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
